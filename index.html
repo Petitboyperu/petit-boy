@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es-PE">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#fff8ec">
+    <meta name="description" content="Empanadas artesanales y postres en Magdalena del Mar. Descubre el menú de PETIT BOY y realiza tu pedido directamente por WhatsApp.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PETIT BOY | Empanadas y Postres en Magdalena del Mar">
+    <meta property="og:description" content="Explora el menú y arma tu pedido de PETIT BOY desde tu celular.">
+    <meta property="og:image" content="https://petitboyperu.github.io/petit-boy/assets/logo.png">
+    <title>PETIT BOY | Empanadas y Postres en Magdalena del Mar</title>
+    <link rel="icon" href="assets/icon-192.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#inicio" aria-label="PETIT BOY, ir al inicio"><img src="assets/logo.png" alt="Logo de PETIT BOY"><span>PETIT BOY</span></a>
+        <nav class="header-actions" aria-label="Enlaces rápidos">
+          <a id="header-instagram" class="icon-link" href="https://www.instagram.com/petitboy.peru" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a id="header-whatsapp" class="icon-link" href="https://wa.me/51967657766" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.4 7.5L3.5 20l1-4.3a8.5 8.5 0 1 1 16-4.1Z"/><path d="M9 8.5c.6 3 2.7 5.1 5.8 6.1l1.2-1.2 2 1.1c-.1 1.2-1.3 2-2.6 1.9-4.3-.3-7.4-3.3-7.8-7.5-.1-1.3.7-2.6 1.7-2.7Z"/></svg></a>
+          <button class="cart-icon" id="header-cart" type="button" aria-label="Abrir pedido">🛒 <span id="header-count">0</span></button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="hero shell" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <span class="eyebrow">HECHO CON AMOR EN MAGDALENA</span>
+          <h1 id="hero-title">¿Qué se te antoja hoy?</h1>
+          <p>Empanadas artesanales y postres hechos con amor.</p>
+          <div class="hero-actions">
+            <button type="button" data-category-jump="empanadas" class="hero-link">Ver empanadas</button>
+            <button type="button" data-category-jump="tortas" class="hero-link secondary">Ver postres</button>
+          </div>
+          <span class="hero-location">⌖ Jr. Grau 440 · Magdalena del Mar</span>
+        </div>
+        <div class="hero-photo"><img src="assets/products/trufa-carrot-cake.webp" alt="Imagen ilustrativa de la trufa de Carrot Cake" fetchpriority="high"><span class="hero-sticker">Un antojo<br>para hoy ♡</span></div>
+      </section>
+
+      <section class="shop shell" id="menu" aria-label="Menú de productos">
+        <div class="shop-heading"><div><span class="eyebrow">NUESTRO MENÚ</span><h2>Elige algo rico</h2></div><p>Fotos ilustrativas de los productos.</p></div>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="¿Qué se te antoja?" aria-label="Buscar productos por nombre" autocomplete="off"></label>
+        <div class="category-bar"><div id="category-list" class="category-list" role="group" aria-label="Filtrar por categoría"></div></div>
+        <section id="featured-section" class="featured-section" aria-labelledby="featured-title"><div class="section-heading"><h3 id="featured-title">Los favoritos de PETIT BOY</h3><span>Desliza para ver más →</span></div><div id="featured-list" class="featured-list"></div></section>
+        <div class="section-heading products-heading"><h3 id="product-heading">Todo el menú</h3><span id="product-count"></span></div>
+        <div id="product-grid" class="product-grid"></div>
+        <div id="empty-state" class="empty-state" hidden><span>♡</span><h3>No encontramos ese antojo</h3><p>Prueba buscando otro producto o cambia la categoría.</p></div>
+      </section>
+
+      <section class="info-section shell"><div class="visit-card"><span class="eyebrow">VEN A VERNOS</span><h2>Visítanos</h2><p>Jr. Grau 440<br>Magdalena del Mar, Lima</p><a id="maps-link" class="dark-button" href="#" target="_blank" rel="noopener noreferrer">Cómo llegar ↗</a></div><div class="review-card"><span class="eyebrow">TU OPINIÓN CUENTA</span><h2>¿Ya probaste PETIT BOY?</h2><p>Tu opinión nos ayuda muchísimo a seguir creciendo.</p><a id="reviews-link" class="text-button" href="https://g.page/r/CRzovqtiAwb8ECE/review" target="_blank" rel="noopener noreferrer">Déjanos una reseña ↗</a></div><div class="instagram-band"><span>Un poquito más de PETIT BOY cada día.</span><a id="instagram-cta" href="https://www.instagram.com/petitboy.peru" target="_blank" rel="noopener noreferrer">Síguenos en Instagram ↗</a></div></section>
+    </main>
+
+    <footer class="footer"><div class="shell footer-inner"><div class="footer-brand"><img src="assets/logo.png" alt="Logo de PETIT BOY"><div><strong>PETIT BOY</strong><p>Empanadas que provocan, postres que enamoran.</p></div></div><div class="footer-links"><span>Jr. Grau 440 · Magdalena del Mar</span><a id="footer-instagram" href="https://www.instagram.com/petitboy.peru" target="_blank" rel="noopener noreferrer">Instagram</a><a id="footer-reviews" href="https://g.page/r/CRzovqtiAwb8ECE/review" target="_blank" rel="noopener noreferrer">Reseñas Google</a><a id="footer-whatsapp" href="https://wa.me/51967657766" target="_blank" rel="noopener noreferrer">WhatsApp</a></div><small>© PETIT BOY</small></div></footer>
+
+    <button id="floating-cart" class="floating-cart" type="button" hidden><span>🛒 Ver mi pedido</span><span id="floating-summary"></span></button>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <dialog id="product-dialog" class="product-dialog"><button class="dialog-close" type="button" data-close="product-dialog" aria-label="Cerrar">×</button><div id="product-dialog-content"></div></dialog>
+    <dialog id="cart-dialog" class="cart-dialog"><div class="cart-top"><div><span class="eyebrow">PETIT BOY</span><h2>Tu pedido <span>♡</span></h2></div><button class="dialog-close" type="button" data-close="cart-dialog" aria-label="Cerrar pedido">×</button></div><div id="cart-dialog-content" class="cart-content"></div></dialog>
+    <dialog id="confirm-dialog" class="confirm-dialog"><div id="confirm-content"></div></dialog>
+  </body>
+</html>

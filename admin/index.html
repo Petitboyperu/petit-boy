@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es-PE">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Administrar menú | PETIT BOY</title>
+    <link rel="icon" href="../assets/icon-192.png" type="image/png">
+    <link rel="stylesheet" href="admin.css">
+    <script src="admin.js" defer></script>
+  </head>
+  <body>
+    <header><a href="../"><img src="../assets/logo.png" alt="PETIT BOY"><span>Volver al menú</span></a><button id="download" type="button">Descargar catálogo actualizado</button></header>
+    <main>
+      <div class="intro"><span>PETIT BOY · ADMINISTRACIÓN</span><h1>Tu catálogo</h1><p>Edita aquí y descarga <code>store.json</code>. Para que los cambios aparezcan a todos, reemplaza <code>data/store.json</code> en GitHub y publica la nueva versión. Esta pantalla guarda un borrador solo en este navegador.</p><div id="status" role="status"></div></div>
+      <nav class="tabs" aria-label="Secciones de administración"><button data-tab="products" aria-current="page">Productos</button><button data-tab="categories">Categorías</button><button data-tab="coupons">Cupones</button><button data-tab="config">Configuración</button></nav>
+      <section id="products-panel" class="panel"><div class="section-top"><h2>Productos</h2><button id="new-product" type="button">+ Nuevo producto</button></div><div class="table-wrap"><table><thead><tr><th>Producto</th><th>Precio</th><th>Categoría</th><th>Disponible</th><th>Destacado</th><th>Orden</th><th></th></tr></thead><tbody id="products-table"></tbody></table></div></section>
+      <section id="categories-panel" class="panel" hidden><div class="section-top"><h2>Categorías</h2><button id="new-category" type="button">+ Nueva categoría</button></div><div class="table-wrap"><table><thead><tr><th>Nombre</th><th>Icono</th><th>Activa</th><th>Orden</th><th></th></tr></thead><tbody id="categories-table"></tbody></table></div></section>
+      <section id="coupons-panel" class="panel" hidden><div class="section-top"><h2>Cupones</h2><button id="new-coupon" type="button">+ Nuevo cupón</button></div><p>No hay promociones activas por defecto.</p><div class="table-wrap"><table><thead><tr><th>Código</th><th>Tipo</th><th>Valor</th><th>Vence</th><th>Activo</th><th></th></tr></thead><tbody id="coupons-table"></tbody></table></div></section>
+      <section id="config-panel" class="panel" hidden><h2>Configuración</h2><form id="config-form" class="fields"><label>Número de WhatsApp (con código de país)<input name="whatsappNumber" inputmode="numeric" required></label><label>Instagram<input name="instagramUrl" type="url"></label><label>Google Maps<input name="mapsUrl" type="url"></label><label>Reseñas Google<input name="reviewsUrl" type="url"></label><label>Dirección<input name="address"></label><label>Horario de atención (opcional)<input name="openingHours"></label><label>Texto sobre delivery<input name="deliveryNote"></label><label>Inicio del mensaje de WhatsApp<textarea name="orderIntro" rows="3"></textarea></label><button type="submit">Guardar en borrador</button></form></section>
+    </main>
+    <dialog id="editor"><form id="editor-form"><div class="modal-head"><h2 id="editor-title"></h2><button type="button" id="close-editor" aria-label="Cerrar">×</button></div><div id="editor-fields" class="fields"></div><div class="modal-actions"><button type="button" id="cancel-editor">Cancelar</button><button type="submit">Guardar</button></div></form></dialog>
+  </body>
+</html>
