@@ -17,7 +17,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="custom-orders.css">
     <script src="app.js" defer></script>
+    <script src="custom-orders.js" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -40,6 +42,7 @@
           <div class="hero-actions">
             <button type="button" data-category-jump="empanadas" class="hero-link">Ver empanadas</button>
             <button type="button" data-category-jump="tortas" class="hero-link secondary">Ver postres</button>
+            <a class="hero-link custom-order-jump" href="#personalizados">Tortas personalizadas</a>
           </div>
           <span class="hero-location">⌖ Jr. Grau 440 · Magdalena del Mar</span>
         </div>
@@ -54,6 +57,108 @@
         <div class="section-heading products-heading"><h3 id="product-heading">Todo el menú</h3><span id="product-count"></span></div>
         <div id="product-grid" class="product-grid"></div>
         <div id="empty-state" class="empty-state" hidden><span>♡</span><h3>No encontramos ese antojo</h3><p>Prueba buscando otro producto o cambia la categoría.</p></div>
+      </section>
+
+      <section class="custom-orders shell" id="personalizados" aria-labelledby="custom-orders-title">
+        <div class="custom-orders-heading">
+          <span class="eyebrow">CELEBRACIONES A TU MEDIDA</span>
+          <h2 id="custom-orders-title">Tortas Personalizadas <span>Para momentos especiales</span></h2>
+        </div>
+        <div class="custom-orders-layout">
+          <div class="custom-orders-visual">
+            <img src="assets/tortas-personalizadas.webp" alt="Torta personalizada de cumpleaños con flores rosadas, mariposas lilas y detalles dorados de PETIT BOY" loading="lazy" width="1024" height="1536">
+          </div>
+          <div class="custom-orders-panel">
+            <span class="eyebrow">CUÉNTANOS TU IDEA</span>
+            <h3>Diseñemos tu celebración</h3>
+            <p class="custom-orders-intro">Elige los detalles que tienes en mente. Te responderemos por WhatsApp con disponibilidad y cotización.</p>
+            <div class="custom-orders-notice" role="note">
+              <strong>Planifica con tiempo</strong>
+              <p id="custom-order-lead-text">Todos los pedidos personalizados requieren al menos 3 días de anticipación para cuidar cada detalle artesanal. Para diseños más elaborados, recomendamos 5 días o más.</p>
+            </div>
+            <form id="custom-order-form">
+              <div class="custom-orders-fields">
+                <label>Tipo de pedido
+                  <select name="orderType" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Torta temática</option>
+                    <option>Mesa dulce</option>
+                    <option>Bocaditos</option>
+                    <option>Postres individuales</option>
+                  </select>
+                </label>
+                <label>Porciones o invitados
+                  <select name="size" required>
+                    <option value="">Selecciona un tamaño</option>
+                    <option>10-15 porciones</option>
+                    <option>20-30 porciones</option>
+                    <option>50+ porciones</option>
+                    <option>Otro tamaño (indicar en notas)</option>
+                  </select>
+                </label>
+                <label id="custom-order-base-label">Bizcocho o base <span class="custom-orders-optional">(opcional según pedido)</span>
+                  <select name="base">
+                    <option value="">A definir contigo</option>
+                    <option>Chocolate</option>
+                    <option>Zanahoria (Carrot Cake)</option>
+                    <option>Plátano y pecanas</option>
+                    <option>Tres leches</option>
+                    <option>Cheesecake</option>
+                    <option>Vainilla (a consultar)</option>
+                    <option>Red velvet (a consultar)</option>
+                    <option>Otra idea (indicar en notas)</option>
+                  </select>
+                </label>
+                <label id="custom-order-filling-label">Relleno o combinación <span class="custom-orders-optional">(opcional según pedido)</span>
+                  <select name="filling">
+                    <option value="">A definir contigo</option>
+                    <option>Manjar de olla</option>
+                    <option>Chocolate 53%</option>
+                    <option>Frambuesa</option>
+                    <option>Arándanos</option>
+                    <option>Oreo</option>
+                    <option>Fudge artesanal (a consultar)</option>
+                    <option>Crema pastelera (a consultar)</option>
+                    <option>Maracuyá (a consultar)</option>
+                    <option>Otra idea (indicar en notas)</option>
+                  </select>
+                </label>
+                <label>Fecha del evento
+                  <input name="eventDate" type="date" required aria-describedby="custom-order-date-help">
+                  <small id="custom-order-date-help">Elige una fecha con la anticipación mínima indicada.</small>
+                </label>
+                <label>Ocasión
+                  <select name="occasion" required>
+                    <option value="">Selecciona una ocasión</option>
+                    <option>Cumpleaños</option>
+                    <option>Boda</option>
+                    <option>Baby shower</option>
+                    <option>Aniversario</option>
+                    <option>Celebración infantil</option>
+                    <option>Evento corporativo</option>
+                    <option>Otra ocasión</option>
+                  </select>
+                </label>
+                <label class="custom-orders-full">Tu nombre
+                  <input name="customerName" type="text" autocomplete="name" maxlength="80" placeholder="¿Cómo te llamas?" required>
+                </label>
+                <label class="custom-orders-full">Detalles de tu idea <span class="custom-orders-optional">(opcional)</span>
+                  <textarea name="notes" rows="4" maxlength="600" placeholder="Cuéntanos la temática, colores, dedicatoria o sabores que imaginas."></textarea>
+                </label>
+              </div>
+              <button class="custom-orders-submit" type="submit">Cotizar por WhatsApp <span aria-hidden="true">↗</span></button>
+              <a id="custom-order-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" hidden tabindex="-1" aria-hidden="true"></a>
+              <p class="custom-orders-footnote">La cotización no confirma el pedido. PETIT BOY revisará tu solicitud y te responderá por WhatsApp.</p>
+              <p class="custom-orders-status" id="custom-order-status" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+        <ul class="custom-orders-badges" aria-label="Lo especial de nuestros pedidos">
+          <li><span aria-hidden="true">♧</span>Diseños personalizados</li>
+          <li><span aria-hidden="true">✦</span>Detalles únicos</li>
+          <li><span aria-hidden="true">♡</span>Ideal para cumpleaños y eventos</li>
+          <li><span aria-hidden="true">☆</span>Acabados de calidad</li>
+        </ul>
       </section>
 
       <section class="info-section shell"><div class="visit-card"><span class="eyebrow">VEN A VERNOS</span><h2>Visítanos</h2><p>Jr. Grau 440<br>Magdalena del Mar, Lima</p><a id="maps-link" class="dark-button" href="#" target="_blank" rel="noopener noreferrer">Cómo llegar ↗</a></div><div class="review-card"><span class="eyebrow">TU OPINIÓN CUENTA</span><h2>¿Ya probaste PETIT BOY?</h2><p>Tu opinión nos ayuda muchísimo a seguir creciendo.</p><a id="reviews-link" class="text-button" href="https://g.page/r/CRzovqtiAwb8ECE/review" target="_blank" rel="noopener noreferrer">Déjanos una reseña ↗</a></div><div class="instagram-band"><span>Un poquito más de PETIT BOY cada día.</span><a id="instagram-cta" href="https://www.instagram.com/petitboy.peru" target="_blank" rel="noopener noreferrer">Síguenos en Instagram ↗</a></div></section>

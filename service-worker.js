@@ -1,5 +1,5 @@
-const CACHE = "petit-boy-v3";
-const CORE = ["./", "index.html", "styles.css", "app.js", "manifest.webmanifest", "data/store.json", "assets/logo.png", "assets/icon-192.png", "assets/icon-512.png"];
+const CACHE = "petit-boy-v4";
+const CORE = ["./", "index.html", "styles.css", "custom-orders.css", "app.js", "custom-orders.js", "manifest.webmanifest", "data/store.json", "assets/logo.png", "assets/tortas-personalizadas.webp", "assets/icon-192.png", "assets/icon-512.png"];
 self.addEventListener("install", event => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE);

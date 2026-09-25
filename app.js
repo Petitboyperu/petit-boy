@@ -52,6 +52,7 @@ async function start() {
     saveCart();
     fillLinks();
     renderAll();
+    document.dispatchEvent(new CustomEvent("petitboy:store-ready", { detail: state.store.config }));
   } catch {
     $("#product-grid").innerHTML = `<div class="loading">No pudimos cargar el menú. Revisa tu conexión y vuelve a intentarlo.</div>`;
     $("#featured-section").hidden = true;

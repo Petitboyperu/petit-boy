@@ -1,6 +1,6 @@
 # PETIT BOY
 
-Menú móvil con catálogo, búsqueda, categorías, carrito persistente y pedido preparado para WhatsApp. Incluye 27 productos con imágenes ilustrativas, la trufa de Carrot Cake a S/ 2.50 y una categoría de empanadas lista para completar cuando haya datos reales.
+Menú móvil con catálogo, búsqueda, categorías, carrito persistente, pedidos por WhatsApp y un formulario de cotización para tortas y eventos. Incluye 27 productos con imágenes ilustrativas, la trufa de Carrot Cake a S/ 2.50 y una categoría de empanadas lista para completar cuando haya datos reales.
 
 ## Publicar en GitHub Pages
 
@@ -18,6 +18,14 @@ También puedes probarlo en tu computadora con `python -m http.server 8000` desd
 Abre `/admin/` en la web publicada. Allí puedes cambiar productos, categorías, cupones y configuración. El panel guarda un borrador en ese navegador y permite descargar `store.json`. Para publicar los cambios a todos los clientes, reemplaza [`data/store.json`](data/store.json) en el repositorio y espera la actualización de GitHub Pages. El panel no tiene acceso de escritura al repositorio ni autenticación; por eso no modifica el sitio público directamente.
 
 El número de WhatsApp está en `config.whatsappNumber`, dentro de `data/store.json`. Debe contener código de país y número, solo dígitos. Actualmente está configurado como `51967657766`.
+
+## Tortas y eventos
+
+La sección `#personalizados` permite solicitar una cotización para tortas temáticas, mesas dulces, bocaditos o postres individuales. El formulario crea un mensaje de WhatsApp con tipo de pedido, sabores, porciones, fecha, ocasión, nombre y notas. No calcula precios ni confirma pedidos automáticamente.
+
+El mínimo de anticipación se configura con `config.customOrderLeadDays` en `data/store.json` y está fijado inicialmente en 3 días. La fecha del evento no puede ser anterior a ese mínimo. Los sabores marcados «a consultar» no figuran como productos confirmados en el menú; PETIT BOY debe validar su disponibilidad al cotizar.
+
+La imagen de esta sección está en `assets/tortas-personalizadas.webp`. Para probar el flujo localmente con Playwright, ejecuta `python tests/smoke_custom_orders.py` mientras el servidor HTTP está activo en el puerto 8000.
 
 Para añadir una empanada, crea un producto en `/admin/`, elige la categoría **Empanadas**, asigna nombre, precio y ruta de imagen, descarga el JSON y súbelo junto con la foto. No hay empanadas ficticias en el catálogo inicial.
 
